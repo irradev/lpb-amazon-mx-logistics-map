@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import BuildingsPages from './pages/buildings-pages/buildings-pages';
+import { BuildingsPage } from './pages/buildings-page/buildings-page';
 
 export const routes: Routes = [
     {
         path: '',
-        component: BuildingsPages
+        component: BuildingsPage
     }
 ];
