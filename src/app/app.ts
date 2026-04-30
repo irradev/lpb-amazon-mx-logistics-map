@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MainLayout } from './layouts/main-layout/main-layout';
+
+import '@fontsource-variable/inter/wght.css';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [MainLayout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

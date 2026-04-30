@@ -1,3 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 @import 'tailwindcss';
+
+@theme {
+
+
+    --color-amz-primary: #232F3E;
+    --color-amz-secondary: #FF9900;
+    --color-amz-tertiary: #007185;
+    --color-amz-neutral: #F0F2F2;
+
+
+    --animate-fadeIn: fadeIn 0.5s ease-in-out;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+@plugin "daisyui" {
+    themes: light --default, night;
+}
