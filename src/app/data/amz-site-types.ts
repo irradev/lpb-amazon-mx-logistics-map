@@ -1,0 +1,12 @@
+
+export const amzSiteTypes = {
+    "DS": {
+        description: 'Amazon DS (Delivery Station) es un centro logístico clave en la última milla de la cadena de suministro de Amazon. Funciona como un nodo de distribución regional donde los paquetes provenientes de los centros de cumplimiento (FCs) y centros de clasificación (Sortation Centers) son consolidados y preparados para su entrega final a los clientes. En esta instalación, los paquetes son escaneados, asignados a rutas de entrega específicas y cargados en las vans de los repartidores. Su operación está optimizada para maximizar la eficiencia en la recolección y salida de pedidos, garantizando entregas rápidas y confiables. Como parte de la red de última milla, los DS son esenciales para cumplir con las expectativas de entrega rápida de Amazon.'
+    },
+    "FC": {
+        description: 'Amazon FC (Fulfillment Center) es un centro de cumplimiento logístico clave en la última milla de la cadena de suministro de Amazon. Funciona como un nodo de distribución regional donde los paquetes provenientes de los centros de cumplimiento (FCs) y centros de clasificación (Sortation Centers) son consolidados y preparados para su entrega final a los clientes. En esta instalación, los paquetes son escaneados, asignados a rutas de entrega específicas y cargados en las vans de los repartidores. Su operación está optimizada para maximizar la eficiencia en la recolección y salida de pedidos, garantizando entregas rápidas y confiables. Como parte de la red de última milla, los FC son esenciales para cumplir con las expectativas de entrega rápida de Amazon.'
+    },
+    "SC": {
+        description: 'Amazon SC (Sortation Center) es un centro de clasificación logística clave en la última milla de la cadena de suministro de Amazon. Funciona como un nodo de distribución regional donde los paquetes provenientes de los centros de cumplimiento (FCs) y centros de clasificación (Sortation Centers) son consolidados y preparados para su entrega final a los clientes. En esta instalación, los paquetes son escaneados, asignados a rutas de entrega específicas y cargados en las vans de los repartidores. Su operación está optimizada para maximizar la eficiencia en la recolección y salida de pedidos, garantizando entregas rápidas y confiables. Como parte de la red de última milla, los DMTPs son esenciales para cumplir con las expectativas de entrega rápida de Amazon.'
+    }
+}

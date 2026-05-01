@@ -1,6 +1,10 @@
-import { AfterViewInit, Component, ElementRef, signal, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, signal, viewChild, OnDestroy, effect } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
-import { environment } from '../../../environments/environment.development';
+import { amzLogisticSites } from '../../data/amz-logistics-sites';
+import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
+import { MapService } from '../../services/map-service';
+import { SiteInfoService } from '../../services/site-info-service';
+
 
 @Component({
   selector: 'app-buildings-pages',
@@ -8,11 +12,21 @@ import { environment } from '../../../environments/environment.development';
   templateUrl: './buildings-page.html',
 
 })
-export class BuildingsPage implements AfterViewInit {
+export class BuildingsPage implements AfterViewInit, OnDestroy {
+
+  private readonly mapService = inject(MapService);
+  private readonly siteInfoService = inject(SiteInfoService);
+
   public divElement = viewChild<ElementRef<HTMLDivElement>>('map');
-  public map = signal<mapboxgl.Map | null>(null);
-  public zoom = signal(14);
-  public coordinates = signal({ lng: -71.1591, lat: 42.3158 });
+
+  resizeEffect = effect((cleanup) => {
+    console.log('visible', this.siteInfoService.isVisible());
+    const timeout = setTimeout(() => {
+      this.mapService.getMap()?.resize();
+    }, 350);
+
+    cleanup(() => clearTimeout(timeout));
+  });
 
   async ngAfterViewInit() {
     if (!this.divElement()?.nativeElement) return;
@@ -21,39 +35,41 @@ export class BuildingsPage implements AfterViewInit {
 
     const element = this.divElement()!.nativeElement;
 
-    mapboxgl.accessToken = environment.MAPBOX_KEY;
-
-    const map = new mapboxgl.Map({
-      container: element,
-      center: this.coordinates(),
-      zoom: this.zoom()
-    });
-
-    map.addControl(new mapboxgl.FullscreenControl());
-    map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new mapboxgl.ScaleControl());
-    this.map.set(map);
-    this.mapListeners(map);
+    const map = this.mapService.initializeMap(element);
+    this.addAmzBuildingMarkers(map);
   }
 
-  mapListeners(map: mapboxgl.Map) {
-    map.on('zoomend', (event: mapboxgl.MapEvent) => {
-      const zoom = event.target.getZoom();
-      this.zoom.set(zoom);
-    });
-
-    map.on('moveend', (event: mapboxgl.MapEvent) => {
-      // también map.getCenter();
-      const coordinates = event.target.getCenter();
-      this.coordinates.set({ lng: coordinates.lng, lat: coordinates.lat });
-    });
-
-    map.on('load', () => {
-      console.log('map loaded');
-    });
-
-
+  ngOnDestroy(): void {
+    this.mapService.getMap()?.remove();
   }
+
+
+  addAmzBuildingMarkers(map: mapboxgl.Map) {
+
+    amzLogisticSites.forEach(site => {
+      const marker = new mapboxgl.Marker({
+        color: '#FF9900',
+      })
+        .setLngLat(site.coords)
+        .addTo(map);
+
+      const el = marker.getElement();
+
+      el.addEventListener('click', () => {
+        this.selectSite(site);
+      })
+    });
+  }
+
+
+  selectSite(site: AmzLogisticSite) {
+    this.siteInfoService.setSiteInfo(site);
+    this.siteInfoService.showInfo();
+    setTimeout(() => {
+      this.mapService.flyTo(site.coords, 15);
+    }, 370);
+  }
+
 }
 
 

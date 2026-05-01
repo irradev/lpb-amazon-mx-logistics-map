@@ -1,19 +1,17 @@
-<div class="w-full flex justify-center absolute bottom-4 px-2 sm:px-12">
+<div class="w-full flex justify-center absolute bottom-4 px-2 sm:px-12 transition-all duration-400"
+    [class]="{'translate-y-24': siteInfoService.isVisible(), 'translate-y-0': !siteInfoService.isVisible()}">
     <div class="flex justify-around items-center w-full sm:w-auto  sm:gap-8 rounded-2xl glass px-4 py-2 h-auto">
-        <button
-            class="btn flex flex-col gap-1 h-full bg-transparent hover:bg-white/40 py-1 border-none shadow-none rounded-2xl">
-            <icon-map-locaiton [size]="42" />
+        <tab-button (tab)="onTabMap()">
+            <icon-map-locaiton [size]="30" />
             Edificios
-        </button>
-        <button
-            class="btn flex flex-col gap-1 h-full bg-transparent hover:bg-white/40 py-1 border-none shadow-none rounded-2xl">
-            <icon-favorites [size]="42" />
+        </tab-button>
+        <tab-button>
+            <icon-favorites [size]="30" />
             Favoritos
-        </button>
-        <button
-            class="btn flex flex-col gap-1 h-full bg-transparent hover:bg-white/40 py-1 border-none shadow-none rounded-2xl">
-            <icon-info [size]="42" />
+        </tab-button>
+        <tab-button>
+            <icon-info [size]="30" />
             Info
-        </button>
+        </tab-button>
     </div>
 </div>

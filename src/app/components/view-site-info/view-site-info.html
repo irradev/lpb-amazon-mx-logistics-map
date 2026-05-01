@@ -1,0 +1,39 @@
+<section class="w-full h-full relative">
+
+    <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40" [class]="{
+            '-top-6': isVisible(),
+            'top-5': !isVisible()
+        }" (click)="closeInfo()">
+        <icon-chevron-down [size]="36" />
+        CERRAR
+    </button>
+
+    <article class="flex flex-col sm:flex-row gap-4 sm:gap-8 px-4 py-4 sm:px-8 sm:pt-8 h-full overflow-y-auto">
+
+        <div class="w-full h-full">
+            <img class="aspect-video w-full h-[220px] sm:h-full object-cover rounded-2xl" [src]="site()?.imageUrl"
+                alt="">
+        </div>
+
+        <div class="w-full h-full">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+                    <p class="text-uppercase text-xs sm:text-sm font-bold text-gray-500">{{ site()?.type }}</p>
+                    <h2 class="site-info__name">{{ site()?.name }}</h2>
+                </div>
+                <button class="btn">
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+
+            </div>
+            <h2 class="site-info__name">{{ site()?.name }}</h2>
+            <p class="site-info__type">{{ site()?.type }}</p>
+            <p class="site-info__address">{{ site()?.address?.municipality }}, {{ site()?.address?.state }}, {{
+                site()?.address?.country }}</p>
+            <p class="site-info__description">{{ site()?.description }}</p>
+        </div>
+    </article>
+
+</section>
