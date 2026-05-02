@@ -5,10 +5,13 @@ import { IconLeftArrow } from '../icons/icon-arrow-left';
 import { IconRightArrow } from '../icons/icon-arrow-right';
 import { SiteInfoService } from '../../services/site-info-service';
 import { MapService } from '../../services/map-service';
+import { IconFavoritesBtn } from '../icons/icon-favorites-btn';
+import { IconLocation } from '../icons/icon-location';
+import { IconRoute } from '../icons/icon-route';
 
 @Component({
   selector: 'view-site-info',
-  imports: [IconChevronDown, IconLeftArrow, IconRightArrow],
+  imports: [IconChevronDown, IconLeftArrow, IconRightArrow, IconFavoritesBtn, IconLocation, IconRoute],
   templateUrl: './view-site-info.html',
 })
 export class ViewSiteInfo {

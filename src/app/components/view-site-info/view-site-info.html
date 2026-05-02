@@ -1,38 +1,83 @@
-<section class="w-full h-full relative">
+<section class="w-full h-full relative bg-amz-neutral">
 
-    <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40" [class]="{
+    <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40 z-10"
+        [class]="{
             '-top-6': isVisible(),
             'top-5': !isVisible()
         }" (click)="closeInfo()">
-        <icon-chevron-down [size]="36" />
+        <icon-chevron-down [size]="32" />
         CERRAR
     </button>
 
-    <article class="flex flex-col sm:flex-row gap-4 sm:gap-8 px-4 py-4 sm:px-8 sm:pt-8 h-full overflow-y-auto">
+    <article
+        class="flex flex-col sm:flex-row gap-0 sm:gap-8 px-4 py-4 sm:px-8 sm:pt-8 h-full overflow-y-auto sm:overflow-y-visible">
 
-        <div class="w-full h-full">
+        <div class="w-full h-full  flex items-center justify-center">
             <img class="aspect-video w-full h-[220px] sm:h-full object-cover rounded-2xl" [src]="site()?.imageUrl"
-                alt="">
+                [alt]="site()?.name">
         </div>
 
-        <div class="w-full h-full">
+        <div class="w-full h-full sm:overflow-y-auto flex flex-col">
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center sticky -top-4 sm:top-0 bg-amz-neutral pt-4 sm:pt-0 ">
 
-                <div>
-                    <p class="text-uppercase text-xs sm:text-sm font-bold text-gray-500">{{ site()?.type }}</p>
-                    <h2 class="site-info__name">{{ site()?.name }}</h2>
+                <div class="flex flex-col w-full gap-1 mb-2">
+                    <p
+                        class="uppercase text-xs sm:text-sm font-bold text-amz-secondary brightness-95 tracking-[.09rem]">
+                        {{ site()?.type
+                        }}</p>
+                    <h2 class="text-xl sm:text-2xl font-bold text-amz-primary">{{ site()?.name }}</h2>
                 </div>
-                <button class="btn">
-                    <i class="fa-solid fa-heart"></i>
+                <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm">
+                    <icon-favorites-btn [filled]="false" />
                 </button>
 
             </div>
-            <h2 class="site-info__name">{{ site()?.name }}</h2>
-            <p class="site-info__type">{{ site()?.type }}</p>
-            <p class="site-info__address">{{ site()?.address?.municipality }}, {{ site()?.address?.state }}, {{
-                site()?.address?.country }}</p>
-            <p class="site-info__description">{{ site()?.description }}</p>
+
+            <div class="flex items-center gap-1 text-gray-500 sticky top-14 bg-amz-neutral sm:static">
+                <icon-location [size]="24" />
+                <p class="text-sm sm:text-base">{{ site()?.address?.municipality }}, {{
+                    site()?.address?.state }}, {{
+                    site()?.address?.country }}</p>
+            </div>
+
+            <div class="divider mt-0 pt-2 mb-1 pb-3 sticky top-20 sm:top-16 bg-amz-neutral"></div>
+
+            <p class="pt-0 mt-0 flex-grow">{{ site()?.description }}
+                <!-- lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua
+                lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua
+                lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua
+                lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua
+                lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua
+                lorem ipsum dolor sit amet consectetur adipiscing
+                elit sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua -->
+
+            </p>
+            <div class="flex flex-col gap-2 pt-2 pb-2">
+                <a href="https://trabaja.amazon.com.mx/"
+                    class="btn text-amz-primary bg-amz-secondary font-bold hover:bg-amz-secondary hover:brightness-95"
+                    target="_blank" rel="noopener noreferrer">
+                    <!-- <icon-route /> -->
+                    Explorar vacantes</a>
+                <a [href]="site()?.googleMapsUrl" class="btn text-amz-tertiary hover:bg-gray-500/20" target="_blank"
+                    rel="noopener noreferrer">
+                    <icon-route />
+                    Ver en Google Maps</a>
+            </div>
         </div>
     </article>
 
