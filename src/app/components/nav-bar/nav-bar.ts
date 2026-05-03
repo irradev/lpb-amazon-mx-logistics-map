@@ -4,7 +4,8 @@ import { IconFavorites } from "../icons/icon-favorites";
 import { IconInfo } from "../icons/icon-info";
 import { TabButton } from '../tab-button/tab-button';
 import { MapService } from '../../services/map-service';
-import { SiteInfoService } from '../../services/site-info-service';
+import { ViewControlService } from '../../services/view-control-service';
+import { SiteInteractionService } from "../../services/site-interaction-service";
 
 @Component({
   selector: 'nav-bar',
@@ -13,13 +14,14 @@ import { SiteInfoService } from '../../services/site-info-service';
 })
 export class NavBar {
   private readonly mapService = inject(MapService);
-  public siteInfoService = inject(SiteInfoService);
+  public viewControlService = inject(ViewControlService);
+  private readonly siteInteractionService = inject(SiteInteractionService);
 
   public onTabMap() {
 
-    if (this.siteInfoService.getSiteInfo()) {
-      this.siteInfoService.setSiteInfo(null);
-      this.siteInfoService.hideInfo();
+    if (this.siteInteractionService.getSiteInfo()) {
+      this.siteInteractionService.setSiteInfo(null);
+      this.viewControlService.hideInfo();
       this.resetMapWIthDelay(520);
     } else {
       this.resetMapWIthDelay(0);

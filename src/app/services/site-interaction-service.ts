@@ -1,6 +1,6 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { AmzLogisticSite } from "../interfaces/amz-logistics-site";
-import { SiteInfoService } from "./site-info-service";
+import { ViewControlService } from "./view-control-service";
 import { MapService } from "./map-service";
 
 
@@ -9,18 +9,28 @@ import { MapService } from "./map-service";
 })
 export class SiteInteractionService {
 
-    private readonly siteInfoService = inject(SiteInfoService);
+    private readonly viewControlService = inject(ViewControlService);
     private readonly mapService = inject(MapService);
 
+    private siteInfo = signal<AmzLogisticSite | null>(null);
+
+    public getSiteInfo() {
+        return this.siteInfo();
+    }
+
+    public setSiteInfo(site: AmzLogisticSite | null) {
+        this.siteInfo.set(site);
+    }
+
     public selectSite(site: AmzLogisticSite) {
-        this.siteInfoService.setSiteInfo(site);
-        this.siteInfoService.showInfo();
+        this.setSiteInfo(site);
+        this.viewControlService.showInfo();
         this.mapService.flyTo(site.coords, 15);
     }
 
     public selectSiteWithDelay(site: AmzLogisticSite, delay = 370) {
-        this.siteInfoService.setSiteInfo(site);
-        this.siteInfoService.showInfo();
+        this.setSiteInfo(site);
+        this.viewControlService.showInfo();
         setTimeout(() => {
             this.mapService.flyTo(site.coords, 15);
         }, delay);

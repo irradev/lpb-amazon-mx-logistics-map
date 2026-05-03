@@ -1,5 +1,5 @@
 <div class="w-full flex justify-center absolute bottom-4 px-2 sm:px-12 transition-all duration-400"
-    [class]="{'translate-y-24': siteInfoService.isVisible(), 'translate-y-0': !siteInfoService.isVisible()}">
+    [class]="{'translate-y-24': viewControlService.isVisible(), 'translate-y-0': !viewControlService.isVisible()}">
     <div class="flex justify-around items-center w-full sm:w-auto  sm:gap-8 rounded-2xl glass px-4 py-2 h-auto">
         <tab-button (tab)="onTabMap()">
             <icon-map-locaiton [size]="30" />

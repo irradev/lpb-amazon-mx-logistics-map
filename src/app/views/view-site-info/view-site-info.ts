@@ -1,26 +1,24 @@
 import { Component, effect, inject, input, signal, } from '@angular/core';
-import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
-import { IconChevronDown } from '../icons/icon-chevron-down';
-import { IconLeftArrow } from '../icons/icon-arrow-left';
-import { IconRightArrow } from '../icons/icon-arrow-right';
-import { SiteInfoService } from '../../services/site-info-service';
+import { IconChevronDown } from '../../components/icons/icon-chevron-down';
+import { ViewControlService } from '../../services/view-control-service';
 import { MapService } from '../../services/map-service';
-import { IconFavoritesBtn } from '../icons/icon-favorites-btn';
-import { IconLocation } from '../icons/icon-location';
-import { IconRoute } from '../icons/icon-route';
+import { IconFavoritesBtn } from '../../components/icons/icon-favorites-btn';
+import { IconLocation } from '../../components/icons/icon-location';
+import { IconRoute } from '../../components/icons/icon-route';
 import { SiteInteractionService } from '../../services/site-interaction-service';
+import { IconChevronRight } from '../../components/icons/icon-chevron-right';
+import { IconChevronLeft } from '../../components/icons/icon-chevron-left';
 import type { MapMarker } from '../../interfaces/marker';
-import { IconChevronRight } from '../icons/icon-chevron-right';
-import { IconChevronLeft } from '../icons/icon-chevron-left';
+import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
 
 @Component({
   selector: 'view-site-info',
-  imports: [IconChevronDown, IconLeftArrow, IconRightArrow, IconFavoritesBtn, IconLocation, IconRoute, IconChevronRight, IconChevronLeft],
+  imports: [IconChevronDown, IconFavoritesBtn, IconLocation, IconRoute, IconChevronRight, IconChevronLeft],
   templateUrl: './view-site-info.html',
 })
 export class ViewSiteInfo {
 
-  public siteInfoService = inject(SiteInfoService);
+  public viewControlService = inject(ViewControlService);
   private mapService = inject(MapService);
   public siteInteractionService = inject(SiteInteractionService);
   public prevMarker = signal<MapMarker | null>(null);
@@ -53,8 +51,8 @@ export class ViewSiteInfo {
   }
 
   public closeInfo() {
-    this.siteInfoService.hideInfo();
-    this.siteInfoService.setSiteInfo(null);
+    this.viewControlService.hideInfo();
+    this.siteInteractionService.setSiteInfo(null);
     setTimeout(() => {
       this.mapService.resetMapPosition();
       this.mapService.getMap()?.resize();

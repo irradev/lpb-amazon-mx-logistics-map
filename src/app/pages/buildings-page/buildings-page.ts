@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import { amzLogisticSites } from '../../data/amz-logistics-sites';
 import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
 import { MapService } from '../../services/map-service';
-import { SiteInfoService } from '../../services/site-info-service';
+import { ViewControlService } from '../../services/view-control-service';
 import { SiteInteractionService } from '../../services/site-interaction-service';
 
 
@@ -16,13 +16,13 @@ import { SiteInteractionService } from '../../services/site-interaction-service'
 export class BuildingsPage implements AfterViewInit, OnDestroy {
 
   private readonly mapService = inject(MapService);
-  private readonly siteInfoService = inject(SiteInfoService);
+  private readonly viewControlService = inject(ViewControlService);
   public siteInteractionService = inject(SiteInteractionService);
 
   public divElement = viewChild<ElementRef<HTMLDivElement>>('map');
 
   resizeEffect = effect((cleanup) => {
-    console.log('visible', this.siteInfoService.isVisible());
+    console.log('visible', this.viewControlService.isVisible());
     const timeout = setTimeout(() => {
       this.mapService.getMap()?.resize();
     }, 350);
