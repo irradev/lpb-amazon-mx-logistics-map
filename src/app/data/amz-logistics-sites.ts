@@ -1,4 +1,5 @@
 import { AmzLogisticSite } from "../interfaces/amz-logistics-site";
+import { amzSiteTypes } from "./amz-site-types";
 
 
 export const amzLogisticSites: AmzLogisticSite[] = [
@@ -17,7 +18,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MX+DMT2/@25.7556791,-100.3097374,470m/data=!3m1!1e3!4m12!1m5!3m4!2zMjXCsDQ1JzIwLjciTiAxMDDCsDE4JzMyLjYiVw!8m2!3d25.755759!4d-100.3090515!3m5!1s0x866295dbcc8cbc47:0xaf2c2bd4a3dae93!8m2!3d25.7560348!4d-100.3094163!16s%2Fg%2F11n5910dgv?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MX+DMT2/@25.7556791,-100.3097374,470m/data=!3m1!1e3!4m12!1m5!3m4!2zMjXCsDQ1JzIwLjciTiAxMDDCsDE4JzMyLjYiVw!8m2!3d25.755759!4d-100.3090515!3m5!1s0x866295dbcc8cbc47:0xaf2c2bd4a3dae93!8m2!3d25.7560348!4d-100.3094163!16s%2Fg%2F11n5910dgv?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.DeliveryStationV1.description
     },
     {
         id: crypto.randomUUID(),
@@ -33,7 +35,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+DMT3/@25.7093226,-100.5106615,580m/data=!3m1!1e3!4m12!1m5!3m4!2zMjXCsDQyJzMzLjUiTiAxMDDCsDMwJzM1LjMiVw!8m2!3d25.7093067!4d-100.509794!3m5!1s0x866299d7441582d5:0xeb33d0af23144ba2!8m2!3d25.7090372!4d-100.509665!16s%2Fg%2F11qnt2x4tt?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+DMT3/@25.7093226,-100.5106615,580m/data=!3m1!1e3!4m12!1m5!3m4!2zMjXCsDQyJzMzLjUiTiAxMDDCsDMwJzM1LjMiVw!8m2!3d25.7093067!4d-100.509794!3m5!1s0x866299d7441582d5:0xeb33d0af23144ba2!8m2!3d25.7090372!4d-100.509665!16s%2Fg%2F11qnt2x4tt?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.DeliveryStationV2.description
     },
     {
         id: crypto.randomUUID(),
@@ -49,7 +52,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+M%C3%A9xico+-+DMT4/@25.6704861,-100.2015661,18.82z/data=!4m6!3m5!1s0x8662c121ae886fa3:0x4e24a6a4ebd895da!8m2!3d25.6706112!4d-100.200859!16s%2Fg%2F11s510z72y?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+M%C3%A9xico+-+DMT4/@25.6704861,-100.2015661,18.82z/data=!4m6!3m5!1s0x8662c121ae886fa3:0x4e24a6a4ebd895da!8m2!3d25.6706112!4d-100.200859!16s%2Fg%2F11s510z72y?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.DeliveryStationV1.description
     },
     {
         id: crypto.randomUUID(),
@@ -65,7 +69,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY1/@25.7929166,-100.1629691,17z/data=!3m1!4b1!4m6!3m5!1s0x8662ef99433e071d:0xb16dabbb2ddbe57e!8m2!3d25.7929118!4d-100.1603942!16s%2Fg%2F11hj6r63q7?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY1/@25.7929166,-100.1629691,17z/data=!3m1!4b1!4m6!3m5!1s0x8662ef99433e071d:0xb16dabbb2ddbe57e!8m2!3d25.7929118!4d-100.1603942!16s%2Fg%2F11hj6r63q7?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.SortationCenterV1.description
     },
     {
         id: crypto.randomUUID(),
@@ -81,7 +86,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY+2/@25.7774483,-100.1668937,17.61z/data=!4m6!3m5!1s0x8662e983f364a539:0x1e832b4db0a5c401!8m2!3d25.7775445!4d-100.1657784!16s%2Fg%2F11s_2qyhv0?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY+2/@25.7774483,-100.1668937,17.61z/data=!4m6!3m5!1s0x8662e983f364a539:0x1e832b4db0a5c401!8m2!3d25.7775445!4d-100.1657784!16s%2Fg%2F11s_2qyhv0?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.SortationCenterV2.description
     },
     {
         id: crypto.randomUUID(),
@@ -97,7 +103,8 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY3/@25.8744091,-100.2406053,17z/data=!3m1!4b1!4m6!3m5!1s0x8662f3005b6d8219:0x4163df0c51042d30!8m2!3d25.8744043!4d-100.2380304!16s%2Fg%2F11ldw_31_0?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MTY3/@25.8744091,-100.2406053,17z/data=!3m1!4b1!4m6!3m5!1s0x8662f3005b6d8219:0x4163df0c51042d30!8m2!3d25.8744043!4d-100.2380304!16s%2Fg%2F11ldw_31_0?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.FulfillmentCenterV1.description
     },
     {
         id: crypto.randomUUID(),
@@ -113,6 +120,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
             state: 'Nuevo León',
             country: 'México'
         },
-        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MX+MTY9/@25.8387235,-100.3484702,14.31z/data=!4m10!1m2!2m1!1sAmazon+MTY9!3m6!1s0x866293002d65542b:0x3fcb5d5562479fa!8m2!3d25.8377258!4d-100.3281207!15sCgtBbWF6b24gTVRZOSIDiAEBkgEJd2FyZWhvdXNl4AEA!16s%2Fg%2F11x0znzcg8?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D'
+        googleMapsUrl: 'https://www.google.com/maps/place/Amazon+MX+MTY9/@25.8387235,-100.3484702,14.31z/data=!4m10!1m2!2m1!1sAmazon+MTY9!3m6!1s0x866293002d65542b:0x3fcb5d5562479fa!8m2!3d25.8377258!4d-100.3281207!15sCgtBbWF6b24gTVRZOSIDiAEBkgEJd2FyZWhvdXNl4AEA!16s%2Fg%2F11x0znzcg8?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D',
+        description: amzSiteTypes.SortationCenterV1.description
     }
 ]

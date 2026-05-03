@@ -1,4 +1,4 @@
-<section class="w-full h-full relative bg-amz-neutral">
+<section class="w-full h-full relative bg-amz-neutral pr-4">
 
     <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40 z-10"
         [class]="{
@@ -7,6 +7,20 @@
         }" (click)="closeInfo()">
         <icon-chevron-down [size]="32" />
         CERRAR
+    </button>
+
+    <button class="btn btn-circle glass absolute left-2 hover:bg-white/40 z-10" [class]="{
+            'top-[calc(50%)]': isVisible(),
+            'top-1/2': !isVisible()
+        }" (click)="goToPrevMarker()">
+        <icon-chevron-left [size]="20" />
+    </button>
+
+    <button class="btn btn-circle glass absolute right-2 hover:bg-white/40 z-10" [class]="{
+            'top-[calc(50%)]': isVisible(),
+            'top-1/2': !isVisible()
+        }" (click)="goToNextMarker()">
+        <icon-chevron-right [size]="20" />
     </button>
 
     <article
@@ -42,30 +56,8 @@
 
             <div class="divider mt-0 pt-2 mb-1 pb-3 sticky top-20 sm:top-16 bg-amz-neutral"></div>
 
-            <p class="pt-0 mt-0 flex-grow">{{ site()?.description }}
-                <!-- lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua
-                lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua
-                lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua
-                lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua
-                lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua
-                lorem ipsum dolor sit amet consectetur adipiscing
-                elit sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua -->
+            <p class="pt-0 mt-0 pb-2 flex-grow whitespace-pre-line">{{ site()?.description }}</p>
 
-            </p>
             <div class="flex flex-col gap-2 pt-2 pb-2">
                 <a href="https://trabaja.amazon.com.mx/"
                     class="btn text-amz-primary bg-amz-secondary font-bold hover:bg-amz-secondary hover:brightness-95"

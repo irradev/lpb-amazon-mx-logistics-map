@@ -4,6 +4,7 @@ import { amzLogisticSites } from '../../data/amz-logistics-sites';
 import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
 import { MapService } from '../../services/map-service';
 import { SiteInfoService } from '../../services/site-info-service';
+import { SiteInteractionService } from '../../services/site-interaction-service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class BuildingsPage implements AfterViewInit, OnDestroy {
 
   private readonly mapService = inject(MapService);
   private readonly siteInfoService = inject(SiteInfoService);
+  public siteInteractionService = inject(SiteInteractionService);
 
   public divElement = viewChild<ElementRef<HTMLDivElement>>('map');
 
@@ -53,22 +55,18 @@ export class BuildingsPage implements AfterViewInit, OnDestroy {
         .setLngLat(site.coords)
         .addTo(map);
 
+      this.mapService.addMarker({ id: site.id, marker, site });
+
       const el = marker.getElement();
 
       el.addEventListener('click', () => {
-        this.selectSite(site);
+        this.siteInteractionService.selectSiteWithDelay(site);
       })
     });
   }
 
 
-  selectSite(site: AmzLogisticSite) {
-    this.siteInfoService.setSiteInfo(site);
-    this.siteInfoService.showInfo();
-    setTimeout(() => {
-      this.mapService.flyTo(site.coords, 15);
-    }, 370);
-  }
+
 
 }
 
