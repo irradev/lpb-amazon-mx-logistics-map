@@ -4,7 +4,7 @@ import { IconFavorites } from "../icons/icon-favorites";
 import { IconInfo } from "../icons/icon-info";
 import { TabButton } from '../tab-button/tab-button';
 import { MapService } from '../../services/map-service';
-import { ViewControlService } from '../../services/view-control-service';
+import { ViewControlService, ViewType } from '../../services/view-control-service';
 import { SiteInteractionService } from "../../services/site-interaction-service";
 
 @Component({
@@ -21,7 +21,7 @@ export class NavBar {
 
     if (this.siteInteractionService.getSiteInfo()) {
       this.siteInteractionService.setSiteInfo(null);
-      this.viewControlService.hideInfo();
+      this.viewControlService.hideView();
       this.resetMapWIthDelay(520);
     } else {
       this.resetMapWIthDelay(0);
@@ -36,10 +36,10 @@ export class NavBar {
   }
 
   public onTabFavorites() {
-
+    this.viewControlService.showView(ViewType.favorites);
   }
 
-  public onTabInfo() {
+  public onTabAbout() {
 
   }
 }

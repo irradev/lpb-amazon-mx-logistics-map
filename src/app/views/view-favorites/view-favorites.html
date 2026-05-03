@@ -1,1 +1,58 @@
-<p>view-favorites works!</p>,
+<section
+    class="bg-amz-neutral absolute bottom-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 h-full max-h-3/5 md:max-h-4/5 w-full max-w-3xl rounded-t-2xl transform  overflow-visible shadow-lg shadow-amz-tertiary/40"
+    [class]="{
+        'translate-y-0': isVisible(),
+        'translate-y-[calc(100%+2rem)]': !isVisible(),
+    }">
+    <div class="h-full overflow-y-auto">
+
+        <button class="btn glass min-w-40 rounded-full absolute -top-4 left-1/2 -translate-x-1/2 hover:bg-white/40 z-40"
+            (click)="closeInfo()">
+            <icon-chevron-down [size]="32" />
+            CERRAR
+        </button>
+        <div class="pt-9 px-4 pb-4">
+            <h3 class="text-lg sm:text-xl font-bold text-amz-primary text-center">Sitios donde te gustaría trabajar
+            </h3>
+            <p class="text-center text-sm sm:text-base mt-1 text-gray-600">Forma parte del equipo y la cultura de <span
+                    class="font-bold text-amz-tertiary">Amazon</span> en México</p>
+
+        </div>
+
+
+        <article class="mt-4 container mx-auto px-4 pb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @for (site of favorites(); track site.id) {
+                <div class="card bg-base-500 w-full shadow-md overflow-hidden">
+                    <div (click)="selectFavorite(site)">
+                        <mini-map [coordinates]="site.coords" [zoom]="15" />
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            {{ site.name }}
+                        </h2>
+                        <div class="flex items-center gap-1 text-gray-500">
+                            <icon-location [size]="14" />
+                            <p class="text-xs line-clamp-1">{{ site.address.municipality }}, {{
+                                site.address.state }}, {{
+                                site.address.country }}</p>
+                        </div>
+                        <div class="card-actions justify-end mt-1">
+                            <div class="badge badge-amz-secondary border-amz-secondary text-amz-secondary text-xs">{{
+                                site.type }}</div>
+                        </div>
+                    </div>
+                </div>
+                } @empty {
+                <div class="col-span-2 md:col-span-3 flex flex-col items-center gap-2 py-8">
+                    <p class="text-center text-gray-500">Aún no has añadido sitios favoritos</p>
+                    <button class="btn btn-sm md:btn-md" (click)="closeInfo()">
+                        Explorar sitios
+                    </button>
+                </div>
+                }
+            </div>
+
+        </article>
+    </div>
+</section>

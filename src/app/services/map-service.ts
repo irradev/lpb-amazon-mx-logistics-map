@@ -66,4 +66,22 @@ export class MapService {
             essential: true
         });
     }
+
+    public createMiniMap(element: HTMLDivElement, coordinates: Coords, zoom: number, markerColor?: string) {
+        const map = new mapboxgl.Map({
+            container: element,
+            center: coordinates,
+            zoom: zoom,
+            interactive: false,
+            pitch: 30,
+        });
+
+        new mapboxgl.Marker({
+            color: markerColor || '#00C0F5',
+            draggable: false
+        })
+            .setLngLat(coordinates)
+            .addTo(map);
+
+    }
 }

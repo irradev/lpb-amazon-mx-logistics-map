@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal, } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, } from '@angular/core';
 import { IconChevronDown } from '../../components/icons/icon-chevron-down';
 import { ViewControlService } from '../../services/view-control-service';
 import { MapService } from '../../services/map-service';
@@ -10,6 +10,8 @@ import { IconChevronRight } from '../../components/icons/icon-chevron-right';
 import { IconChevronLeft } from '../../components/icons/icon-chevron-left';
 import type { MapMarker } from '../../interfaces/marker';
 import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
+import { StorageService } from '../../services/storage-service';
+import { FAVORITES_STORAGE } from '../../constants/storage-keys';
 
 @Component({
   selector: 'view-site-info',
@@ -21,11 +23,15 @@ export class ViewSiteInfo {
   public viewControlService = inject(ViewControlService);
   private mapService = inject(MapService);
   public siteInteractionService = inject(SiteInteractionService);
+  private storageService = inject(StorageService);
+
   public prevMarker = signal<MapMarker | null>(null);
   public nextMarker = signal<MapMarker | null>(null);
 
   public site = input<AmzLogisticSite | null>(null);
   public isVisible = input<boolean>(false);
+
+  public isSiteFavorite = signal<boolean>(false);
 
 
   public siteSelected = effect(() => {
@@ -51,7 +57,7 @@ export class ViewSiteInfo {
   }
 
   public closeInfo() {
-    this.viewControlService.hideInfo();
+    this.viewControlService.hideView();
     this.siteInteractionService.setSiteInfo(null);
     setTimeout(() => {
       this.mapService.resetMapPosition();
@@ -59,8 +65,25 @@ export class ViewSiteInfo {
     }, 520);
   }
 
+  public addToFavorites() {
+    const site = this.site();
+    if (!site) return;
 
+    const currentFavorites = this.storageService.get<AmzLogisticSite[]>(FAVORITES_STORAGE) || [];
+    const newFavorites = [...currentFavorites, site];
+    this.storageService.set<AmzLogisticSite[]>(FAVORITES_STORAGE, newFavorites);
+    this.isSiteFavorite.set(true);
+  }
 
+  public removeFromFavorites() {
+    const site = this.site();
+    if (!site) return;
+
+    const currentFavorites = this.storageService.get<AmzLogisticSite[]>(FAVORITES_STORAGE) || [];
+    const newFavorites = currentFavorites.filter(f => f.id !== site.id);
+    this.storageService.set<AmzLogisticSite[]>(FAVORITES_STORAGE, newFavorites);
+    this.isSiteFavorite.set(false);
+  }
 
 
 }

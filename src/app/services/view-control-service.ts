@@ -1,22 +1,28 @@
 import { Injectable, signal } from '@angular/core';
 
+export enum ViewType {
+  location = 'location',
+  favorites = 'favorites',
+  about = 'about'
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ViewControlService {
 
-  private visible = signal(false);
+  public viewType = signal<ViewType | null>(null);
 
   public isVisible() {
-    return this.visible();
+    return this.viewType() !== null;
   }
 
 
-  public hideInfo() {
-    this.visible.set(false);
+  public hideView() {
+    this.viewType.set(null);
   }
 
-  public showInfo() {
-    this.visible.set(true);
+  public showView(viewType: ViewType) {
+    this.viewType.set(viewType);
   }
 }

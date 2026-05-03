@@ -9,19 +9,23 @@
         CERRAR
     </button>
 
-    <button class="btn btn-circle glass absolute left-2 hover:bg-white/40 z-10" [class]="{
+    <div class="tooltip tooltip-right absolute left-2" [class]="{
             'top-[calc(50%)]': isVisible(),
             'top-1/2': !isVisible()
-        }" (click)="goToPrevMarker()">
-        <icon-chevron-left [size]="20" />
-    </button>
+        }" data-tip="Anterior">
+        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToPrevMarker()">
+            <icon-chevron-left [size]="20" />
+        </button>
+    </div>
 
-    <button class="btn btn-circle glass absolute right-2 hover:bg-white/40 z-10" [class]="{
+    <div class="tooltip tooltip-left absolute right-2" [class]="{
             'top-[calc(50%)]': isVisible(),
             'top-1/2': !isVisible()
-        }" (click)="goToNextMarker()">
-        <icon-chevron-right [size]="20" />
-    </button>
+        }" data-tip="Siguiente">
+        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToNextMarker()">
+            <icon-chevron-right [size]="20" />
+        </button>
+    </div>
 
     <article
         class="flex flex-col sm:flex-row gap-0 sm:gap-8 px-4 py-4 sm:px-8 sm:pt-8 h-full overflow-y-auto sm:overflow-y-visible">
@@ -41,9 +45,22 @@
                         }}</p>
                     <h2 class="text-xl sm:text-2xl font-bold text-amz-primary">{{ site()?.name }}</h2>
                 </div>
-                <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm">
-                    <icon-favorites-btn [filled]="false" />
-                </button>
+
+                @if (isSiteFavorite()) {
+                <div class="tooltip tooltip-left" data-tip="Eliminar de favoritos">
+                    <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm"
+                        (click)="removeFromFavorites()">
+                        <icon-favorites-btn [filled]="true" />
+                    </button>
+                </div>
+                } @else {
+                <div class="tooltip tooltip-left" data-tip="Añadir a favoritos">
+                    <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm"
+                        (click)="addToFavorites()">
+                        <icon-favorites-btn [filled]="false" />
+                    </button>
+                </div>
+                }
 
             </div>
 

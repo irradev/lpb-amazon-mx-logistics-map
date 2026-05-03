@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { AmzLogisticSite } from "../interfaces/amz-logistics-site";
-import { ViewControlService } from "./view-control-service";
+import { ViewControlService, ViewType } from "./view-control-service";
 import { MapService } from "./map-service";
 
 
@@ -24,13 +24,13 @@ export class SiteInteractionService {
 
     public selectSite(site: AmzLogisticSite) {
         this.setSiteInfo(site);
-        this.viewControlService.showInfo();
+        this.viewControlService.showView(ViewType.location);
         this.mapService.flyTo(site.coords, 15);
     }
 
     public selectSiteWithDelay(site: AmzLogisticSite, delay = 370) {
         this.setSiteInfo(site);
-        this.viewControlService.showInfo();
+        this.viewControlService.showView(ViewType.location);
         setTimeout(() => {
             this.mapService.flyTo(site.coords, 15);
         }, delay);

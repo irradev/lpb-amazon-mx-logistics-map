@@ -5,13 +5,13 @@
             <icon-map-locaiton [size]="30" />
             Edificios
         </tab-button>
-        <tab-button>
+        <tab-button (tab)="onTabFavorites()">
             <icon-favorites [size]="30" />
             Favoritos
         </tab-button>
-        <tab-button>
+        <tab-button (tab)="onTabAbout()">
             <icon-info [size]="30" />
-            Info
+            Acerca de
         </tab-button>
     </div>
 </div>
