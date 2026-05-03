@@ -39,6 +39,7 @@ export class BuildingsPage implements AfterViewInit, OnDestroy {
 
     const map = this.mapService.initializeMap(element);
     this.addAmzBuildingMarkers(map);
+
   }
 
   ngOnDestroy(): void {
@@ -49,8 +50,17 @@ export class BuildingsPage implements AfterViewInit, OnDestroy {
   addAmzBuildingMarkers(map: mapboxgl.Map) {
 
     amzLogisticSites.forEach(site => {
+
+      const elLabel = document.createElement('div');
+      elLabel.innerHTML = `<p class="text-white text-xs -mt-16 bg-black/60 px-2 py-1 rounded">${site.type}</p>`;
+
+      new mapboxgl.Marker(elLabel)
+        .setLngLat(site.coords)
+        .addTo(map);
+
       const marker = new mapboxgl.Marker({
         color: '#FF9900',
+
       })
         .setLngLat(site.coords)
         .addTo(map);
