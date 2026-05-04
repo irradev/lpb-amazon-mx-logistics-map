@@ -12,6 +12,7 @@ import type { MapMarker } from '../../interfaces/marker';
 import type { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
 import { StorageService } from '../../services/storage-service';
 import { FAVORITES_STORAGE } from '../../constants/storage-keys';
+import { FavoritesService } from '../../services/favorites-service';
 
 @Component({
   selector: 'view-site-info',
@@ -24,6 +25,7 @@ export class ViewSiteInfo {
   private mapService = inject(MapService);
   public siteInteractionService = inject(SiteInteractionService);
   private storageService = inject(StorageService);
+  private favoritesService = inject(FavoritesService);
 
   public prevMarker = signal<MapMarker | null>(null);
   public nextMarker = signal<MapMarker | null>(null);
@@ -31,7 +33,11 @@ export class ViewSiteInfo {
   public site = input<AmzLogisticSite | null>(null);
   public isVisible = input<boolean>(false);
 
-  public isSiteFavorite = signal<boolean>(false);
+  public isSiteFavorite = computed(() => {
+    const site = this.site();
+    if (!site) return false;
+    return this.favoritesService.favorites().some(f => f.id === site.id);
+  });
 
 
   public siteSelected = effect(() => {
@@ -66,23 +72,11 @@ export class ViewSiteInfo {
   }
 
   public addToFavorites() {
-    const site = this.site();
-    if (!site) return;
-
-    const currentFavorites = this.storageService.get<AmzLogisticSite[]>(FAVORITES_STORAGE) || [];
-    const newFavorites = [...currentFavorites, site];
-    this.storageService.set<AmzLogisticSite[]>(FAVORITES_STORAGE, newFavorites);
-    this.isSiteFavorite.set(true);
+    this.favoritesService.add(this.site()!);
   }
 
   public removeFromFavorites() {
-    const site = this.site();
-    if (!site) return;
-
-    const currentFavorites = this.storageService.get<AmzLogisticSite[]>(FAVORITES_STORAGE) || [];
-    const newFavorites = currentFavorites.filter(f => f.id !== site.id);
-    this.storageService.set<AmzLogisticSite[]>(FAVORITES_STORAGE, newFavorites);
-    this.isSiteFavorite.set(false);
+    this.favoritesService.remove(this.site()!);
   }
 
 
