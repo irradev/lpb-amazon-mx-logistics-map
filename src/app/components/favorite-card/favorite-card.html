@@ -1,5 +1,6 @@
 <div class="card bg-base-500 w-full shadow-md overflow-hidden">
-    <div class="relative cursor-pointer" (click)="selectSite(site())">
+    <div class="relative cursor-pointer hover:border-amz-secondary border-3 border-transparent rounded-lg transition-all"
+        (click)="selectSite(site())">
         <mini-map [coordinates]="site().coords" [zoom]="15" />
 
         <div
