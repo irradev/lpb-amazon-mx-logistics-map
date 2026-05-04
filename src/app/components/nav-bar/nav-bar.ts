@@ -40,6 +40,6 @@ export class NavBar {
   }
 
   public onTabAbout() {
-
+    this.viewControlService.showView(ViewType.about);
   }
 }

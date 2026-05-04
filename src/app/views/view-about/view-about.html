@@ -1,0 +1,13 @@
+<section
+    class="bg-amz-neutral absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 h-[calc(100%-8rem)] w-full max-w-4xl rounded-2xl transform  overflow-visible shadow-lg shadow-amz-tertiary/20"
+    [class]="{
+        'scale-100': viewControlService.viewType() === viewType,
+        'scale-0': viewControlService.viewType() !== viewType,
+    }">
+    <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 z-50" (click)="close()">
+        <icon-close [size]="32" />
+    </button>
+    <div class="h-full overflow-y-auto">
+        hola
+    </div>
+</section>

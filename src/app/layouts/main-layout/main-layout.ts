@@ -6,10 +6,11 @@ import { ViewSiteInfo } from "../../views/view-site-info/view-site-info";
 import { SiteInteractionService } from '../../services/site-interaction-service';
 import { ViewType } from '../../services/view-control-service';
 import { ViewFavorites } from '../../views/view-favorites/view-favorites';
+import { ViewAbout } from "../../views/view-about/view-about";
 
 @Component({
   selector: 'main-layout',
-  imports: [RouterOutlet, NavBar, ViewSiteInfo, ViewFavorites],
+  imports: [RouterOutlet, NavBar, ViewSiteInfo, ViewFavorites, ViewAbout],
   templateUrl: './main-layout.html',
 })
 export class MainLayout {
