@@ -1,16 +1,15 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ViewControlService, ViewType } from '../../services/view-control-service';
 import { IconChevronDown } from "../../components/icons/icon-chevron-down";
-import { MiniMap } from '../../components/mini-map/mini-map';
 import { AmzLogisticSite } from '../../interfaces/amz-logistics-site';
 import { StorageService } from '../../services/storage-service';
 import { FAVORITES_STORAGE } from '../../constants/storage-keys';
-import { IconLocation } from "../../components/icons/icon-location";
 import { SiteInteractionService } from '../../services/site-interaction-service';
+import { FavoriteCard } from '../../components/favorite-card/favorite-card';
 
 @Component({
   selector: 'view-favorites',
-  imports: [IconChevronDown, MiniMap, IconLocation],
+  imports: [IconChevronDown, FavoriteCard],
   templateUrl: './view-favorites.html',
 })
 export class ViewFavorites {
@@ -28,7 +27,7 @@ export class ViewFavorites {
       setTimeout(() => {
         this.isVisible.set(true);
         this.favorites.set(this.storageService.get<AmzLogisticSite[]>(FAVORITES_STORAGE) || []);
-      }, 300);
+      }, 320);
     } else {
       this.isVisible.set(false);
     }

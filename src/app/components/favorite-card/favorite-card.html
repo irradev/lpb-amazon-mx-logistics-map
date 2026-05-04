@@ -1,0 +1,27 @@
+<div class="card bg-base-500 w-full shadow-md overflow-hidden">
+    <div class="relative cursor-pointer" (click)="selectSite(site())">
+        <mini-map [coordinates]="site().coords" [zoom]="15" />
+
+        <div
+            class="flex items-center gap-2 absolute top-2 right-2 bg-white/90 px-3 py-1 rounded-full shadow text-xs font-medium">
+            <icon-location [size]="14" />
+            Ver en mapa
+
+        </div>
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">
+            {{ site().name }}
+        </h2>
+        <div class="flex items-center gap-1 text-gray-500">
+            <icon-location [size]="14" />
+            <p class="text-xs line-clamp-1">{{ site().address.municipality }}, {{
+                site().address.state }}, {{
+                site().address.country }}</p>
+        </div>
+        <div class="card-actions justify-end mt-1">
+            <div class="badge badge-amz-secondary border-amz-secondary text-amz-secondary text-xs">{{
+                site().type }}</div>
+        </div>
+    </div>
+</div>
