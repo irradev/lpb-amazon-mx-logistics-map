@@ -5,7 +5,7 @@ import { amzSiteTypes } from "./amz-site-types";
 export const amzLogisticSites: AmzLogisticSite[] = [
 
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-DS-02",
         name: 'Amazon DMT2',
         coords: {
             lat: 25.75608016178517,
@@ -22,7 +22,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.DeliveryStationV1.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-DS-03",
         name: 'Amazon DMT3',
         coords: {
             lat: 25.70912420170424,
@@ -39,7 +39,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.DeliveryStationV2.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-DS-04",
         name: 'Amazon DMT4',
         coords: {
             lat: 25.670654990677033,
@@ -56,7 +56,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.DeliveryStationV1.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-SC-01",
         name: 'Amazon MTY1',
         coords: {
             lat: 25.793056676497287,
@@ -73,7 +73,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.SortationCenterV1.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-SC-02",
         name: 'Amazon MTY2',
         coords: {
             lat: 25.7776928216197,
@@ -90,7 +90,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.SortationCenterV2.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-FC-03",
         name: 'Amazon MTY3',
         coords: {
             lat: 25.87462630298482,
@@ -107,7 +107,7 @@ export const amzLogisticSites: AmzLogisticSite[] = [
         description: amzSiteTypes.FulfillmentCenterV1.description
     },
     {
-        id: crypto.randomUUID(),
+        id: "MX-MTY-SC-09",
         name: 'Amazon MTY9',
         coords: {
             lat: 25.839835647597834,
