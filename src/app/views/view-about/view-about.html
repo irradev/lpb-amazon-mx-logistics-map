@@ -1,13 +1,84 @@
 <section
-    class="bg-amz-neutral absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 h-[calc(100%-8rem)] w-full max-w-4xl rounded-2xl transform  overflow-visible shadow-lg shadow-amz-tertiary/20"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 h-full max-h-[700px] sm:max-h-[560px] md:max-h-[650px] w-full max-w-4xl rounded-2xl transform  overflow-visible px-4 lg:px-0"
     [class]="{
         'scale-100': viewControlService.viewType() === viewType,
         'scale-0': viewControlService.viewType() !== viewType,
     }">
-    <button class="btn btn-sm btn-circle btn-ghost absolute top-2 right-2 z-50" (click)="close()">
-        <icon-close [size]="32" />
-    </button>
-    <div class="h-full overflow-y-auto">
-        hola
+    <div
+        class="flex flex-col w-full h-full rounded-2xl shadow-lg shadow-amz-tertiary/20 bg-linear-to-br from-amz-neutral/90 to-amz-neutral">
+        <!-- Header -->
+        <div
+            class="flex justify-between items-center w-full h-16 md:h-22 rounded-t-2xl px-4 md:px-8 border-b border-gray-300">
+            <h1 class="text-lg sm:text-xl font-bold text-amz-primary">Acerca de esta aplicación</h1>
+            <button class="btn btn-sm btn-circle btn-ghost" (click)="close()">
+                <icon-close [size]="32" />
+            </button>
+        </div>
+        <!-- Body -->
+        <div class="h-full overflow-y-auto px-4 md:px-8 py-6">
+            <!-- Autor -->
+            <section class="flex gap-4 pb-8 border-b border-gray-300">
+                <div class="avatar">
+                    <div class="aspect-square w-32 md:w-36 rounded-2xl overflow-hidden border-2 border-amz-tertiary/50">
+                        <img src="assets/images/irradev_profile.webp" />
+                    </div>
+                </div>
+                <div>
+                    <h2 class="section-title">Creador del proyecto</h2>
+                    <p class="text-base md:text-lg font-semibold text-amz-tertiary">Tec. Israel Vázquez</p>
+                    <p class="text-sm md:text-base text-gray-600">Frontend Engineer | 2026 | México</p>
+                    <p class="text-xs md:text-base text-gray-800 mt-2">Desarrollador web apasionado por crear
+                        herramientas prácticas, optimizar procesos y convertir ideas en aplicaciones funcionales, con
+                        enfoque en la interactividad y la experiencia de usuario.</p>
+                </div>
+            </section>
+
+            <!-- About Project -->
+
+            <div class="flex flex-col sm:flex-row gap-8 mt-6">
+                <section class="w-full">
+                    <h2 class="section-title mb-1">Fuentes de información</h2>
+                    <p class="text-xs md:text-base text-gray-400 italic">Encuentra información más actualizada en los
+                        sitios
+                        oficiales:</p>
+                    <div class="flex flex-col gap-3 mt-2">
+                        <link-panel title="Empleos Amazon México" href="https://www.facebook.com/empleosamazonmexico">
+                            <icon-color-facebook [size]="24" />
+                        </link-panel>
+                        <link-panel title="Amazon Logistics (Google Maps)"
+                            href="https://www.google.com/maps/search/amazon+logistics/@25.9003539,-100.3433307,12z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D">
+                            <icon-color-gmaps [size]="24" />
+                        </link-panel>
+                        <link-panel title="Amazon Jobs México" href="https://trabaja.amazon.com.mx/">
+                            <icon-amazon [size]="24" />
+                        </link-panel>
+
+                    </div>
+                </section>
+
+                <section class="w-full">
+                    <h2 class="section-title mb-4">Contexto educativo</h2>
+                    <div class="flex flex-col gap-3 bg-gray-200 border-2 border-gray-300 rounded-lg p-6">
+                        <p class="text-sm md:text-base text-gray-500/85 font-medium italic">
+                            Este proyecto fue desarrollado como parte de la formación de <strong
+                                class="text-amz-tertiary">Angular
+                                Moderno</strong> en:
+                        </p>
+                    </div>
+
+                </section>
+            </div>
+
+            <div class="w-full h-full bg-gray-200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+                libero assumenda est. Molestias quaerat vel quod, cumque consequuntur doloremque aperiam est natus
+                laudantium non itaque nisi numquam tempora voluptate voluptatem.</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-gray-300 px-4 md:px-8 py-6 text-center bg-amz-primary">
+            <p class="text-sm md:text-base text-neutral-content font-medium">
+                Este proyecto fue desarrollado como parte de la formación en:
+            </p>
+        </div>
     </div>
 </section>

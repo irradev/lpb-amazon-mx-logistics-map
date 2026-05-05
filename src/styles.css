@@ -28,3 +28,7 @@
 @plugin "daisyui" {
     themes: light --default, night;
 }
+
+.section-title {
+    @apply text-base sm:text-lg font-semibold text-amz-secondary brightness-75 tracking-[0.09em] uppercase;
+}
