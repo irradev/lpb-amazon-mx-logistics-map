@@ -1,14 +1,13 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ViewControlService, ViewType } from '../../services/view-control-service';
 import { IconClose } from "../../components/icons/icon-close";
-import { LinkPanel } from '../../components/link-panel/link-panel';
-import { IconColorFacebook } from "../../components/icons/icon-color-facebook";
-import { IconColorGmaps } from "../../components/icons/icon-color-gmaps";
-import { IconAmazon } from "../../components/icons/icon-amazon";
+import { AuthorProfile } from "./components/author-profile";
+import { SourceLinks } from "./components/source-links";
+import { EducationalContext } from "./components/educational-context";
 
 @Component({
   selector: 'view-about',
-  imports: [IconClose, LinkPanel, IconColorFacebook, IconColorGmaps, IconAmazon],
+  imports: [IconClose, AuthorProfile, SourceLinks, EducationalContext],
   templateUrl: './view-about.html',
 })
 export class ViewAbout {
