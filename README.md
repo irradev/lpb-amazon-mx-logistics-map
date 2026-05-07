@@ -1,59 +1,145 @@
-# LpbAmazonMxLogistics
+# Amazon MX Logistics Map
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+Amazon MX Logistics Map es una aplicación web desarrollada en Angular enfocada en la visualización y exploración interactiva de centros logísticos de Amazon en México. El proyecto busca centralizar información pública relacionada con ubicaciones, tipos de instalaciones y vacantes laborales, presentándola mediante una experiencia visual simple e intuitiva.
 
-## Development server
+Además del enfoque visual, este proyecto funciona como práctica de arquitectura frontend moderna utilizando Angular standalone, reactividad con Signals, manejo de estado local y renderizado interactivo de mapas.
 
-To start a local development server, run:
+---
+
+## 🧠 Arquitectura
+
+La aplicación sigue una estructura modular orientada a escalabilidad y mantenibilidad:
+
+### Pages / Layouts
+
+Definen la estructura principal de cada vista, organizando la navegación, distribución de contenido y composición general de la interfaz.
+
+### Components
+
+Componentes reutilizables y desacoplados enfocados en UI e interacciones específicas, como tarjetas de sitios, minimapas, paneles informativos y controles visuales.
+
+### Services
+
+Encapsulan lógica reutilizable, persistencia local, manejo de favoritos y utilidades relacionadas con la interacción del mapa y datos de los sitios.
+
+### Models / Types
+
+Interfaces estrictamente tipadas que definen la estructura de los datos utilizados dentro de la aplicación.
+
+Esta organización permite:
+
+* Separación clara de responsabilidades.
+* Escalabilidad progresiva del proyecto.
+* Mayor mantenibilidad del código.
+* Componentes reutilizables y fáciles de extender.
+
+---
+
+## 🔄 Gestión de estado
+
+La aplicación utiliza las primitivas reactivas modernas de Angular mediante Signals y Computed Signals para manejar el estado de forma simple y eficiente.
+
+Esto permite:
+
+* UI altamente reactiva.
+* Actualizaciones granulares sin renderizados innecesarios.
+* Persistencia local de favoritos.
+* Comunicación limpia entre componentes.
+
+---
+
+## 🧭 Navegación
+
+El proyecto utiliza Angular Router en modalidad standalone, permitiendo:
+
+* Navegación fluida tipo SPA.
+* Separación modular de rutas.
+* Carga limpia y organizada de vistas.
+
+---
+
+## 🗺️ Mapas y visualización
+
+La aplicación integra librerías modernas de mapas para mostrar ubicaciones logísticas de manera interactiva.
+
+Incluye funcionalidades como:
+
+* Visualización de centros logísticos sobre mapa.
+* Minimapas interactivos.
+* Posicionamiento automático sobre ubicaciones seleccionadas.
+* Marcadores personalizados.
+* Navegación visual enfocada en exploración geográfica.
+
+---
+
+## ⭐ Funcionalidades principales
+
+* Exploración de centros logísticos de Amazon en México.
+* Visualización de información pública relacionada con cada sitio.
+* Sistema de favoritos persistente mediante Local Storage.
+* Minimapas interactivos dentro de tarjetas.
+* Sección informativa sobre tipos de instalaciones logísticas.
+* Diseño responsive adaptable a dispositivos móviles y escritorio.
+
+---
+
+## ✨ UI y experiencia visual
+
+La interfaz fue diseñada priorizando simplicidad, claridad visual e interactividad.
+
+Se implementaron:
+
+* Layouts modernos utilizando Tailwind CSS.
+* Componentes visuales reutilizables.
+* Transiciones y microinteracciones ligeras.
+* Diseño enfocado en exploración rápida de información.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+* Angular (v21.x) y Standalone Components
+* Angular Signals
+* TypeScript
+* Tailwind CSS
+* Daisy UI
+* Mapbox (Librería de mapas interactivos)
+* Local Storage API
+
+---
+
+## 🚀 Instalación y ejecución
+
+### Levantar el proyecto en Dev
+
+* Clonar el repositorio
+* Instalar dependencias
+* Generar el archivo `.env` basado en el `.env.template`
+* Ejecutar el comando `npm run set-envs` para crear los archivos `environment.ts` y `environment.development.ts`
+* Ejecutar el comando `ng serve` para iniciar el proyecto
+
+Abre tu navegador en:
 
 ```bash
-ng serve
+http://localhost:4200/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 📄 Aviso legal
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+La información presentada en esta aplicación ha sido recopilada a partir de fuentes públicas disponibles en internet, incluyendo plataformas como Amazon Jobs, Google Maps y redes sociales oficiales de Amazon México.
 
-```bash
-ng generate component component-name
-```
+Este proyecto es independiente y no tiene ninguna afiliación, relación ni respaldo oficial por parte de Amazon.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Algunas descripciones de los sitios han sido generadas o adaptadas con ayuda de inteligencia artificial, tomando como referencia información pública como vacantes y descripciones de puestos.
 
-```bash
-ng generate --help
-```
+La información mostrada puede no ser completamente precisa, actualizada o exhaustiva, por lo que debe considerarse únicamente con fines informativos y demostrativos.
 
-## Building
+---
 
-To build the project run:
+## 📝 Notas finales
 
-```bash
-ng build
-```
+Este proyecto fue desarrollado principalmente como práctica de arquitectura frontend, visualización geográfica e integración de datos públicos dentro de una experiencia interactiva moderna.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Además de servir como exploración técnica, el proyecto busca experimentar con interfaces basadas en mapas, organización de información logística y patrones modernos de desarrollo en Angular.
