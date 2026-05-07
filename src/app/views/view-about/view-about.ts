@@ -4,10 +4,11 @@ import { IconClose } from "../../components/icons/icon-close";
 import { AuthorProfile } from "./components/author-profile";
 import { SourceLinks } from "./components/source-links";
 import { EducationalContext } from "./components/educational-context";
+import { LegalInfo } from "./components/legal-info";
 
 @Component({
   selector: 'view-about',
-  imports: [IconClose, AuthorProfile, SourceLinks, EducationalContext],
+  imports: [IconClose, AuthorProfile, SourceLinks, EducationalContext, LegalInfo],
   templateUrl: './view-about.html',
 })
 export class ViewAbout {
