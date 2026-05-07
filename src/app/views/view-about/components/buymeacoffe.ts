@@ -10,7 +10,7 @@ import { NgClass } from "@angular/common";
     template: `
     <div class=" overflow-hidden transition-all duration-1500 h-20 sm:h-12 flex items-center gap-2 bg-amz-neutral" [ngClass]="{
         'w-9': !isTooltipActive(),
-        'w-[190px] sm:w-[335px] md:w-[385px]  sm:bg-red-200': isTooltipActive(),
+        'w-[190px] sm:w-[335px] md:w-[385px]': isTooltipActive(),
     }" >
         
         <button class="btn btn-sm btn-circle btn-ghost hover:bg-transparent hover:border-none" title="¿Me invitas un café?" (click)="toggleTooltip()">
