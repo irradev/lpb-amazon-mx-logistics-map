@@ -5,7 +5,7 @@ import { IconLinkExternal } from "../../../components/icons/icon-link-external";
 @Component({
     selector: 'static-footer',
     template: `
-    <footer class="flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-center px-4 md:px-8 py-4 bg-amz-primary">
+    <footer class="flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-center px-4 md:px-8 py-4 bg-amz-primary rounded-b-2xl">
         <p class="text-base sm:text-base md:text-xl font-semibold text-neutral-content tracking-wider">
             irradev
         </p>
