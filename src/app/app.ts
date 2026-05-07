@@ -1,8 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { MainLayout } from './layouts/main-layout/main-layout';
 
-import '@fontsource-variable/inter/wght.css';
-
 @Component({
   selector: 'app-root',
   imports: [MainLayout],
