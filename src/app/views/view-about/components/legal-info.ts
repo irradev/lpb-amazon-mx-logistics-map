@@ -24,8 +24,14 @@ import { Component } from "@angular/core";
     `,
     styles: [
         `:host {
-            @apply w-full max-w-[60ch] col-span-2 mx-auto;
-        }`
+            @apply w-full max-w-[60ch]  mx-auto;
+        }
+        @media (min-width: 768px) {
+            :host {
+                @apply col-span-2;
+            }
+        }
+        `
     ]
 })
 export class LegalInfo { }

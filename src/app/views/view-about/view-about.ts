@@ -6,10 +6,11 @@ import { EducationalContext } from "./components/educational-context";
 import { LegalInfo } from "./components/legal-info";
 import { StaticFooter } from "./components/static-footer";
 import { StaticHeader } from "./components/static-header";
+import { Buymeacoffe } from "./components/buymeacoffe";
 
 @Component({
   selector: 'view-about',
-  imports: [AuthorProfile, SourceLinks, EducationalContext, LegalInfo, StaticFooter, StaticHeader],
+  imports: [AuthorProfile, SourceLinks, EducationalContext, LegalInfo, StaticFooter, StaticHeader, Buymeacoffe],
   templateUrl: './view-about.html',
 })
 export class ViewAbout {
