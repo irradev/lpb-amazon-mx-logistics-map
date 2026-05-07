@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
       <div class="relative aspect-square w-32 md:w-36 rounded-2xl overflow-hidden border-2 border-amz-tertiary/50">
 
         <img [src]="profileImageUrl"
-          class="w-full h-full object-cover blur-[0.2px] scale-[1.25]" />
+          class="w-full h-full object-cover blur-[0.2px]" />
 
         <div
           class="absolute inset-0 pointer-events-none
