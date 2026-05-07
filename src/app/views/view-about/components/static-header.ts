@@ -1,12 +1,11 @@
 import { Component, inject } from "@angular/core";
 import { IconClose } from "../../../components/icons/icon-close";
 import { ViewControlService } from "../../../services/view-control-service";
-import { Buymeacoffe } from "./buymeacoffe";
 import { IconLinkedinColor } from "../../../components/icons/icon-color-linkedin";
 
 @Component({
     selector: 'static-header',
-    imports: [IconClose, Buymeacoffe, IconLinkedinColor],
+    imports: [IconClose, IconLinkedinColor],
     template: `
    <div
             class="flex justify-between items-center w-full h-16 rounded-t-2xl px-4 md:px-8 border-b border-gray-300">
