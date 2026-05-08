@@ -22,7 +22,9 @@ export class BuildingsPage implements AfterViewInit, OnDestroy {
   public divElement = viewChild<ElementRef<HTMLDivElement>>('map');
 
   resizeEffect = effect((cleanup) => {
-    console.log('visible', this.viewControlService.isVisible());
+    const isVisible = this.viewControlService.isVisible();
+    if (!isVisible) return;
+
     const timeout = setTimeout(() => {
       this.mapService.getMap()?.resize();
     }, 350);
