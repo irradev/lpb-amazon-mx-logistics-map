@@ -1,91 +1,19 @@
 <section class="w-full h-full relative bg-amz-neutral pr-4">
 
-    <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40 z-10"
-        [class]="{
-            '-top-6': isVisible(),
-            'top-5': !isVisible()
-        }" (click)="closeInfo()">
-        <icon-chevron-down [size]="32" />
-        CERRAR
-    </button>
-
-    <div class="tooltip tooltip-right absolute left-2" [class]="{
-            'top-[calc(50%)]': isVisible(),
-            'top-1/2': !isVisible()
-        }" data-tip="Anterior">
-        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToPrevMarker()">
-            <icon-chevron-left [size]="20" />
-        </button>
-    </div>
-
-    <div class="tooltip tooltip-left absolute right-2" [class]="{
-            'top-[calc(50%)]': isVisible(),
-            'top-1/2': !isVisible()
-        }" data-tip="Siguiente">
-        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToNextMarker()">
-            <icon-chevron-right [size]="20" />
-        </button>
-    </div>
+    <nav-controls [siteId]="site().id" />
 
     <article
         class="flex flex-col sm:flex-row gap-0 sm:gap-8 px-4 py-4 sm:px-8 sm:pt-8 h-full overflow-y-auto sm:overflow-y-visible">
 
-        <div class="w-full h-full  flex items-center justify-center">
-            <img class="aspect-video w-full h-[220px] sm:h-full object-cover rounded-2xl" [src]="site()?.imageUrl"
-                [alt]="site()?.name">
-        </div>
+        <site-image [siteImage]="site().imageUrl" [siteName]="site().name" />
 
-        <div class="w-full h-full sm:overflow-y-auto flex flex-col">
+        <div class="w-full h-full sm:overflow-y-auto flex flex-col mb-12 sm:mb-0">
 
-            <div class="flex justify-between items-center sticky -top-4 sm:top-0 bg-amz-neutral pt-4 sm:pt-0 ">
+            <header-info [site]="site()" />
 
-                <div class="flex flex-col w-full gap-1 mb-2">
-                    <p class="uppercase text-xs sm:text-sm font-bold text-amz-tertiary tracking-[.09rem]">
-                        {{ site()?.type
-                        }}</p>
-                    <h2 class="text-xl sm:text-2xl font-bold text-amz-primary">{{ site()?.name }}</h2>
-                </div>
+            <p class="pt-0 mt-0 pb-2 flex-grow whitespace-pre-line">{{ site().description }}</p>
 
-                @if (isSiteFavorite()) {
-                <div class="tooltip tooltip-left" data-tip="Eliminar de favoritos">
-                    <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm"
-                        (click)="removeFromFavorites()">
-                        <icon-favorites-btn [filled]="true" />
-                    </button>
-                </div>
-                } @else {
-                <div class="tooltip tooltip-left" data-tip="Añadir a favoritos">
-                    <button class="btn btn-circle bg-white/90 hover:bg-black/10 hover:border-none shadow-sm"
-                        (click)="addToFavorites()">
-                        <icon-favorites-btn [filled]="false" />
-                    </button>
-                </div>
-                }
-
-            </div>
-
-            <div class="flex items-center gap-1 text-gray-500 sticky top-14 bg-amz-neutral sm:static">
-                <icon-location [size]="24" />
-                <p class="text-sm sm:text-base">{{ site()?.address?.municipality }}, {{
-                    site()?.address?.state }}, {{
-                    site()?.address?.country }}</p>
-            </div>
-
-            <div class="divider mt-0 pt-2 mb-1 pb-3 sticky top-20 sm:top-16 bg-amz-neutral"></div>
-
-            <p class="pt-0 mt-0 pb-2 flex-grow whitespace-pre-line">{{ site()?.description }}</p>
-
-            <div class="flex flex-col gap-2 pt-2 pb-2">
-                <a href="https://trabaja.amazon.com.mx/"
-                    class="btn text-amz-primary bg-amz-secondary font-bold hover:bg-amz-secondary hover:brightness-95"
-                    target="_blank" rel="noopener noreferrer">
-                    <!-- <icon-route /> -->
-                    Explorar vacantes</a>
-                <a [href]="site()?.googleMapsUrl" class="btn text-amz-tertiary hover:bg-gray-500/20" target="_blank"
-                    rel="noopener noreferrer">
-                    <icon-route />
-                    Ver en Google Maps</a>
-            </div>
+            <bottom-actions [site]="site()" />
         </div>
     </article>
 

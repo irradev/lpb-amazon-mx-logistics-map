@@ -7,8 +7,10 @@
         </div>
         <div class="w-full transition-all duration-500 h-0 max-h-[calc(100vh-50%)]"
             [class]="{'h-full': viewControlService.viewType() === ViewType.location}">
-            <view-site-info [isVisible]="viewControlService.viewType() === ViewType.location"
-                [site]="siteInteractionService.getSiteInfo()" />
+            @let site = siteInteractionService.getSiteInfo();
+            @if(site !== null){
+            <view-site-info [site]="site" />
+            }
         </div>
         <view-favorites />
         <view-about />
