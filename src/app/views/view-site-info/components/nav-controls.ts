@@ -13,36 +13,32 @@ import { NgClass } from "@angular/common";
 @Component({
     selector: 'nav-controls',
     imports: [IconChevronLeft, IconChevronRight, IconChevronDown, NgClass],
-    template: ` 
-   <button class="btn glass min-w-40 rounded-full absolute -top-6 left-1/2 -translate-x-1/2 hover:bg-white/40 z-10"
-        [class]="{
-            '-top-6': isVisible(),
-            'top-5': !isVisible()
-        }" (click)="closeInfo()">
-        <icon-chevron-down [size]="32" />
-        CERRAR
-    </button>
+    template: `
+    <div class="absolute -top-6 left-1/2 -translate-x-1/2 flex w-full justify-center items-center gap-4 z-10" [ngClass]="{
+        'invisible': !isVisible(),
+        'visible': isVisible()
+    }">
 
-    <div class="tooltip tooltip-right absolute left-2 z-10" [ngClass]="{
-            'bottom-4 sm:top-[calc(50%)]': isVisible(),
-            'top-1/2': !isVisible()
-        }" data-tip="Anterior">
-        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToPrevMarker()">
-            <icon-chevron-left [size]="20" />
-        </button>
-    </div>
+        <div class="tooltip" data-tip="Anterior">
+            <button class="btn btn-circle glass w-14 sm:w-16  hover:bg-white/40 z-10" (click)="goToPrevMarker()">
+                <icon-chevron-left [size]="20" />
+            </button>
+        </div>
 
-    <div class="tooltip tooltip-left absolute right-2 z-10" [ngClass]="{
-            'bottom-4 sm:top-[calc(50%)]': isVisible(),
-            'top-1/2': !isVisible()
-        }" data-tip="Siguiente">
-        <button class="btn btn-circle glass  hover:bg-white/40 z-10" (click)="goToNextMarker()">
-            <icon-chevron-right [size]="20" />
+        <button class="btn glass min-w-40 rounded-full hover:bg-white/40 z-10" (click)="closeInfo()">
+            <icon-chevron-down [size]="32" />
+            CERRAR
         </button>
+
+        <div class="tooltip" data-tip="Siguiente">
+            <button class="btn btn-circle glass w-14 sm:w-16  hover:bg-white/40 z-10" (click)="goToNextMarker()">
+                <icon-chevron-right [size]="20" />
+            </button>
+        </div> 
     </div>
     `,
 })
-export class NavControls implements OnInit {
+export class NavControls {
     public viewControlService = inject(ViewControlService);
     private mapService = inject(MapService);
     public siteInteractionService = inject(SiteInteractionService);
@@ -53,12 +49,12 @@ export class NavControls implements OnInit {
 
     public isVisible = computed(() => this.viewControlService.viewType() === ViewType.location);
 
-    ngOnInit() {
+    public siteIdEffect = effect(() => {
         if (!this.siteId()) return;
         const prevAndNextMarkers = this.mapService.getPrevAndNextMarker(this.siteId()!);
         this.prevMarker.set(prevAndNextMarkers.prevMarker);
         this.nextMarker.set(prevAndNextMarkers.nextMarker);
-    }
+    });
 
     public goToPrevMarker() {
         const marker = this.prevMarker();
