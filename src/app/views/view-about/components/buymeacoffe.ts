@@ -13,7 +13,7 @@ import { NgClass } from "@angular/common";
         'w-[190px] sm:w-[335px] md:w-[385px]': isTooltipActive(),
     }" >
         
-        <button class="btn btn-sm btn-circle btn-ghost hover:bg-transparent hover:border-none" title="¿Me invitas un café?" (click)="toggleTooltip()">
+        <button class="btn btn-sm btn-circle btn-ghost hover:bg-transparent hover:border-none text-gray-300" title="¿Me invitas un café?" (click)="toggleTooltip()">
             <icon-coffe [size]="31" />
         </button>
 
