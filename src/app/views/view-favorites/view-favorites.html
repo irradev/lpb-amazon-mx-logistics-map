@@ -21,7 +21,7 @@
 
 
         <article class="mt-4 container mx-auto px-4 pb-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
                 @for (site of favorites(); track site.id) {
                 <favorite-site-card [site]="site" (selected)="selectFavorite($event)" />
                 } @empty {
